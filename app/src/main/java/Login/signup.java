@@ -1,5 +1,6 @@
 package Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,34 +10,38 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.enggo.MainActivity;
 import com.example.enggo.R;
 
 public class signup extends AppCompatActivity {
-    EditText passwordd,mobphone,mail,usrusr;
-    TextView login,signup;
+    private Context mContext;
+    private EditText mPassword, mPassword2, mName, mEmail;
+    private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
 
-        usrusr = (EditText) findViewById(R.id.usrusr);
-        passwordd = (EditText)findViewById(R.id.passwrd);
-        mail = (EditText) findViewById(R.id.mail);
-        mobphone = (EditText) findViewById(R.id.mobphone);
-        login = findViewById(R.id.logiin);
-        signup = findViewById(R.id.sup);
+        mContext = signup.this;
+        mPassword = (EditText) findViewById(R.id.signup_password);
+        mPassword2 = (EditText) findViewById(R.id.signup_password2);
+        mName = (EditText) findViewById(R.id.signup_name);
+        mEmail = (EditText) findViewById(R.id.signup_email);
+        btnRegister = (Button) findViewById(R.id.btn_register);
 
-//        Typeface custom_font = Typeface.createFromAsset(getAssets(),"fonts/Lato-Light.ttf");
-//        signup.setTypeface(custom_font);
-//        mail.setTypeface(custom_font);
-//        mobphone.setTypeface(custom_font);
-//        passwordd.setTypeface(custom_font);
-//        usrusr.setTypeface(custom_font);
-//        login.setTypeface(custom_font);
-        login.setOnClickListener(v -> {
-            Intent it = new Intent(signup.this, login.class);
-            startActivity(it);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMainActivity();
+            }
         });
     }
+
+    private void goToMainActivity(){
+        Intent intent = new Intent(mContext, MainActivity.class);
+        startActivity(intent);
+        this.finish();// can't come back when clicked backPress button
+    }
+
 }

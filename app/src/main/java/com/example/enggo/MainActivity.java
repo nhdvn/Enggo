@@ -20,4 +20,5 @@ public class MainActivity extends AppCompatActivity
         Intent itt = new Intent(MainActivity.this, login.class);
         startActivity(itt);
     }
+    //  test
 }

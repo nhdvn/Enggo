@@ -1,5 +1,7 @@
 package Login;
 
+import Quiz.QuizList;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +26,7 @@ import java.util.List;
 
 import SQLServerConnection.UserModel;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private Context mContext;
     private EditText mEmail, mPassword;
@@ -35,7 +37,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mContext = login.this;
+        mContext = Login.this;
         mEmail = (EditText) findViewById(R.id.input_email);
         mPassword = (EditText) findViewById(R.id.input_password);
         bLogin = (Button) findViewById(R.id.btn_login);
@@ -68,12 +70,12 @@ public class login extends AppCompatActivity {
     }
 
     private void goToSignUp(){
-        Intent intent = new Intent(mContext, signup.class);
+        Intent intent = new Intent(mContext, Signup.class);
         startActivity(intent);
     }
 
     private void goToMainActivity(){
-        Intent intent = new Intent(mContext, MainActivity.class);
+        Intent intent = new Intent(mContext, QuizList.class);
         startActivity(intent);
         this.finish();  // can't come back when clicked backPress button
     }

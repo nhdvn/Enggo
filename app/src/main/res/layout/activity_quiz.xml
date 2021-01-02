@@ -112,10 +112,10 @@
         android:layout_gravity="center"
         android:gravity="center">
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/quiz_border"
+            android:background=""
             android:textColor="@color/black"
             android:padding="10dp"
             android:text="Pass"/>
@@ -125,10 +125,11 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
 
-        <TextView
+        <Button
+            android:id="@+id/quiz_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/quiz_border"
+            android:background=""
             android:textColor="@color/black"
             android:padding="10dp"
             android:text="Submit"/>

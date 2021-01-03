@@ -48,7 +48,6 @@ public class login extends AppCompatActivity {
                 User user = new User(mEmail.getText().toString(), mPassword.getText().toString());
                 try {
                     if (!x.checkUser(user)) {
-                        Log.i("xxxx: ", " success");
                         Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
                     }
                     else {

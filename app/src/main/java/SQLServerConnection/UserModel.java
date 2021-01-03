@@ -56,8 +56,8 @@ public class UserModel {
         ResultSet rs = statement.executeQuery("select count(*) num from usr");
         rs.next();
         int numUser = rs.getInt("num");
-        String sql = "insert into usr(id ,username, pass) values("+ String.valueOf(numUser) + ", " +
-                        objUser.getName() + ", " + objUser.getPass()+ ")";
+        String sql = "insert into usr(id ,username, pass) values('"+ String.valueOf(numUser) + "', '" +
+                        objUser.getName() + "', '" + objUser.getPass()+ "')";
 
         if (statement.executeUpdate(sql) > 0) {
             connection.close();

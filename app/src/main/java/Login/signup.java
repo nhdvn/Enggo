@@ -9,9 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import Object.User;
 import com.example.enggo.MainActivity;
 import com.example.enggo.R;
+
+import java.sql.SQLException;
+
+import SQLServerConnection.UserModel;
 
 public class signup extends AppCompatActivity {
     private Context mContext;
@@ -33,13 +37,20 @@ public class signup extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToMainActivity();
+                UserModel regist = new UserModel();
+                try {
+                    regist.Insert(new User(mName.getText().toString(), mPassword2.getText().toString()));
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                goToLogin();
             }
+
         });
     }
 
-    private void goToMainActivity(){
-        Intent intent = new Intent(mContext, MainActivity.class);
+    private void goToLogin(){
+        Intent intent = new Intent(mContext, login.class);
         startActivity(intent);
         this.finish();// can't come back when clicked backPress button
     }

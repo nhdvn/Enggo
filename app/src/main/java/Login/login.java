@@ -4,14 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import Object.User;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.enggo.MainActivity;
 import com.example.enggo.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import SQLServerConnection.UserModel;
 
 public class login extends AppCompatActivity {
 
@@ -33,7 +44,19 @@ public class login extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToMainActivity();
+                UserModel x = new UserModel();
+                User user = new User(mEmail.getText().toString(), mPassword.getText().toString());
+                try {
+                    if (!x.checkUser(user)) {
+                        Log.i("xxxx: ", " success");
+                        Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        goToMainActivity();
+                    }
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         });
 

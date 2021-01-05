@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="680dp">
+        <Button
+            android:id="@+id/Topic_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:layout_weight="1"
+            android:layout_gravity="bottom">
+        </Button>
+        <Button
+            android:id="@+id/Topic_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Topic"
+            android:layout_weight="1"
+            android:layout_gravity="bottom">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/topic1"
+        android:layout_width="170dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/headphone">
+        </ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Music"
+            android:textSize="30dp"
+            android:gravity="center">
+
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="165dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/topic1">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/headphone">
+        </ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Music"
+            android:textSize="30dp"
+            android:gravity="center">
+
+        </TextView>
+    </LinearLayout>
+
+</RelativeLayout>

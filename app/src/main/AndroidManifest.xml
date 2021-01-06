@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enggo">
 
+        <activity
+            android:name=".MainActivity" />
+
         <activity android:name="Activity.Login"
             android:theme="@style/MyTheme">
             <intent-filter>
@@ -21,9 +24,10 @@
         </activity>
 
         <activity
-            android:name=".MainActivity" />
-        <activity
             android:name="Activity.Signup" />
+
+        <activity
+            android:name="Activity.ChooseTopic" />
     </application>
 
 </manifest>

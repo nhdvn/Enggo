@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 UserModel x = new UserModel();
                 User user = new User(mEmail.getText().toString(), mPassword.getText().toString());
                 try {
@@ -50,7 +51,9 @@ public class Login extends AppCompatActivity {
                     }
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
-                }
+                } */
+
+                goToChooseTopic(); // For testing without database
             }
         });
 
@@ -67,8 +70,8 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void goToMainActivity(){
-        Intent intent = new Intent(mContext, MainActivity.class);
+    private void goToChooseTopic(){
+        Intent intent = new Intent(mContext, ChooseTopic.class);
         startActivity(intent);
         this.finish();  // can't come back when clicked backPress button
     }

@@ -6,7 +6,7 @@ public class Topic {
     private String _name;
     private List<Vocab> _vocabs;
     public Topic(String name, List<Vocab> vocabs){
-        this._name = _name;
+        this._name = name;
         this._vocabs = vocabs;
     }
     public String get_name(){return _name;};

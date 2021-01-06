@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Object.Topic;
 import Object.Vocab;
+
 public class TopicModel {
     private JDBCController jdbcController = new JDBCController();
     private Connection connection;

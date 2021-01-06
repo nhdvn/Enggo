@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enggo">
 
-        <activity android:name="Login.login"
+        <activity android:name="Activity.Login"
             android:theme="@style/MyTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
         <activity
             android:name=".MainActivity" />
         <activity
-            android:name="Login.signup" />
+            android:name="Activity.Signup" />
     </application>
 
 </manifest>

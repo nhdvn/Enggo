@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -102,15 +103,18 @@ public class Home extends AppCompatActivity
 
         textView.setText(newTopic.get_name());
 
-        GridLayout.LayoutParams param= new GridLayout.LayoutParams(GridLayout.spec(
-                GridLayout.UNDEFINED,GridLayout.FILL,1f),
-                GridLayout.spec(GridLayout.UNDEFINED,GridLayout.FILL,1f));
+        GridLayout.LayoutParams param = new GridLayout.LayoutParams(
+                GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f),
+                GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f)
+        );
 
         float scale = getResources().getDisplayMetrics().density;
 
         int dp30 = (int) (30 * scale + 0.5f);
 
         textView.setPadding(dp30, dp30, dp30, dp30);
+
+        textView.setTextColor(Color.BLACK);
 
         textView.setGravity(Gravity.CENTER);
 

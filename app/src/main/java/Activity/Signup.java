@@ -1,6 +1,4 @@
-package Login;
-
-import Quiz.QuizList;
+package Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import Object.User;
 
-import com.example.enggo.MainActivity;
 import com.example.enggo.R;
 
 import java.sql.SQLException;

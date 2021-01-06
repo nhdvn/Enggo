@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.enggo.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -190,7 +189,7 @@ public class Lesson extends AppCompatActivity
 
     private void goToQuizList()
     {
-        Intent intent = new Intent(Lesson.this, Quiz.class);
+        Intent intent = new Intent(Lesson.this, Practice.class);
         startActivity(intent);
         this.finish();
     }

@@ -9,23 +9,23 @@ public class JDBCObject {
     private String sPwd;
     private String sDatabase;
     private String sClass;
-    private String sPrort;
+    private String sPort;
 
-    public JDBCObject(String sServerName, String sUserId, String sPwd, String sDatabase, String sPrort) {
+    public JDBCObject(String sServerName, String sUserId, String sPwd, String sDatabase, String sPort) {
         this.sServerName = sServerName;
         this.sUserId = sUserId;
         this.sPwd = sPwd;
         this.sDatabase = sDatabase;
         this.sClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        this.sPrort = sPrort;
+        this.sPort = sPort;
     }
 
-    public String getsPrort() {
-        return sPrort;
+    public String getsPort() {
+        return sPort;
     }
 
-    public void setsPrort(String sPrort) {
-        this.sPrort = sPrort;
+    public void setsPort(String sPort) {
+        this.sPort = sPort;
     }
 
     public String getsServerName() {

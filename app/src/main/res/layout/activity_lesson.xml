@@ -5,9 +5,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="50dp"
-        android:padding="15dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="50dp"
+        android:paddingBottom="50dp"
         android:background="#5fff">
 
         <LinearLayout
@@ -83,7 +84,7 @@
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:padding="10dp"
-            android:text="Quiz"/>
+            android:text="Practice"/>
 
     </LinearLayout>
 

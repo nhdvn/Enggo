@@ -5,8 +5,6 @@ import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
 
-import SQLServerConnection.JDBCObject;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,24 +15,28 @@ import java.sql.SQLException;
 @SuppressLint("NewApi")
 public class JDBCModel {
 
-    public Connection getConnectionOf() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                .permitAll().build();
+    public Connection getConnectionOf()
+    {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        Connection objConn = null;
-        String sConnURL = null;
         JDBCObject objEntity = new JDBCObject("192.168.1.8", "sa", "saxsax11", "master", "1433");
+        Connection objConn = null;
+
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            sConnURL = "jdbc:jtds:sqlserver://" + objEntity.getsServerName() + ":" + objEntity.getsPrort() + ";" +
-                        "databaseName=" + objEntity.getsDatabase()
-                        + ";encrypt=False;sslProtocol=TLSv1.2";
+
+            String sConnURL = "jdbc:jtds:sqlserver://" + objEntity.getsServerName() + ":" + objEntity.getsPort() + ";" +
+                            "databaseName=" + objEntity.getsDatabase() + ";encrypt=False;sslProtocol=TLSv1.2";
+
             objConn = DriverManager.getConnection(sConnURL, "sa", "saxsax11");
-        } catch (SQLException se) {
+        }
+        catch (SQLException se) {
             Log.e("Error", se.getMessage());
-        } catch (ClassNotFoundException e) {
+        }
+        catch (ClassNotFoundException e) {
             Log.e("Error", e.getMessage());
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             Log.e("Error", e.getMessage());
         }
         return objConn;

@@ -56,7 +56,7 @@ public class Home extends AppCompatActivity
         TopicModel model = new TopicModel();
 
         try {
-            List<Topic> topicList = model.getTopiclist();
+            List<Topic> topicList = model.GetTopicList();
 
             for (Topic newTopic : topicList) {
                 insertTopic(newTopic);

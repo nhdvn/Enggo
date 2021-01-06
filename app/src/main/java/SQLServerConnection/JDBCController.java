@@ -10,7 +10,7 @@ import java.sql.Connection;
 public class JDBCController {
     JDBCModel JdbcModel = new JDBCModel();
 
-    public Connection ConnnectionData() {
+    public Connection ConnectionData() {
         return JdbcModel.getConnectionOf();
     }
 }

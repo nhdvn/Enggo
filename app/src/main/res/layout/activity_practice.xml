@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:padding="20dp"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/quiz_border"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Question:\n_________________________________________________"
+                android:typeface="serif"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:typeface="serif"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="You eat mushroom" />
+
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/quiz_border"
+                android:paddingLeft="20dp"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="> "/>
+
+            <GridLayout
+                android:id="@+id/token_board"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:useDefaultMargins="true"
+                android:columnCount="5">
+
+            </GridLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="2">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/quiz_border"
+                android:textColor="@color/black"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Pass"/>
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/quiz_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/quiz_border"
+                android:textColor="@color/black"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Submit"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_lesson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:text="Lesson"/>
+
+
+        <Button
+            android:id="@+id/btn_quiz"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            android:text="Practice"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

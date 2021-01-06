@@ -27,6 +27,10 @@
 
         <activity android:name="Activity.Profile" />
 
+        <activity android:name="Activity.Quiz" />
+
+        <activity android:name="Activity.Lesson" />
+
 
     </application>
 

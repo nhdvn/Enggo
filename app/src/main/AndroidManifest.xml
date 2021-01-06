@@ -11,23 +11,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Enggo">
 
-        <activity
-            android:name=".MainActivity" />
+        <activity android:name=".MainActivity" />
 
         <activity android:name="Activity.Login"
             android:theme="@style/MyTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="Activity.Signup" />
+        <activity android:name="Activity.Signup" />
 
-        <activity
-            android:name="Activity.ChooseTopic" />
+        <activity android:name="Activity.Home" />
+
+        <activity android:name="Activity.Profile" />
+
+
     </application>
 
 </manifest>

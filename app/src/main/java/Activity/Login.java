@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.enggo.MainActivity;
 import com.example.enggo.R;
 
 import java.sql.SQLException;
@@ -39,21 +38,10 @@ public class Login extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                UserModel x = new UserModel();
-                User user = new User(mEmail.getText().toString(), mPassword.getText().toString());
-                try {
-                    if (!x.checkUser(user)) {
-                        Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        goToMainActivity();
-                    }
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                } */
 
-                goToChooseTopic(); // For testing without database
+                // queryUser(); // comment out for testing without database
+
+                goToChooseTopic();
             }
         });
 
@@ -65,13 +53,32 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    private void queryUser()
+    {
+        UserModel userModel = new UserModel();
+
+        User user = new User(mEmail.getText().toString(), mPassword.getText().toString());
+
+        try {
+            if (!userModel.checkUser(user))
+            {
+                Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
+            }
+            else goToChooseTopic();
+        }
+        catch (SQLException error)
+        {
+            error.printStackTrace();
+        }
+    }
+
     private void goToSignUp(){
         Intent intent = new Intent(mContext, Signup.class);
         startActivity(intent);
     }
 
     private void goToChooseTopic(){
-        Intent intent = new Intent(mContext, ChooseTopic.class);
+        Intent intent = new Intent(mContext, Home.class);
         startActivity(intent);
         this.finish();  // can't come back when clicked backPress button
     }

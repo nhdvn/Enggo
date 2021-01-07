@@ -7,16 +7,20 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.enggo.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.UUID;
 
 import Object.Vocab;
 
@@ -70,7 +74,7 @@ public class Lesson extends AppCompatActivity
 
         parent.setOrientation(LinearLayout.HORIZONTAL);
 
-        ImageView image = createHeadphone(word.get_pronoun());
+        ImageView image = createHeadphone(word.get_sentence());
 
         TextView text = createSentence(word.get_sentence());
 
@@ -83,7 +87,7 @@ public class Lesson extends AppCompatActivity
         board.addView(parent);
     }
 
-    private ImageView createHeadphone(String URL)
+    private ImageView createHeadphone(String text)
     {
         ImageView image = new ImageView(this);
 
@@ -103,43 +107,31 @@ public class Lesson extends AppCompatActivity
 
         image.setImageResource(R.drawable.headphone);
 
-        downloadAudioToHeadphone(image, URL);
+        speakOut(image, text);
 
         return image;
     }
 
-    private void downloadAudioToHeadphone(ImageView headPhone, String URL)
+    private void speakOut(ImageView headPhone, String text)
     {
-        headPhone.setOnClickListener(new View.OnClickListener()
-        {
+        headPhone.setOnClickListener(new View.OnClickListener() {
+            TextToSpeech textToSpeech;
             @Override
-            public void onClick(View view)
-            {
-                if (mPlayer.isPlaying())
-                {
-                    try {
-                        mPlayer.reset();
-
-                        if (URL == currentURL) return;
+            public void onClick(View view) {
+                textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if (status != TextToSpeech.ERROR) {
+                            textToSpeech.setLanguage(Locale.ENGLISH);
+                            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                        }
                     }
-                    catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+                });
 
-                try {
-                    currentURL = URL;
-                    mPlayer.setDataSource(URL);
-                    mPlayer.prepare();
-                    mPlayer.start();
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
-    }
 
+    }
     private TextView createSentence(String example)
     {
         TextView text = new TextView(this);

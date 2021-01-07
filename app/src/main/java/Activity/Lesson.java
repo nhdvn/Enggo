@@ -13,53 +13,52 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.enggo.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 
 import Object.Vocab;
 
 
 public class Lesson extends AppCompatActivity
 {
-    MediaPlayer mPlayer = new MediaPlayer();
-    String currentURL = "";
+    int start;
+    int index;
+    int finish;
+
+    List<Vocab> listVocab = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
 
-        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        listVocab = fakeVocab();
 
-        setActionForButton();
+        start = 0;
+        index = 0;
+        finish = listVocab.size() - 1;
 
-        fakeVocab();
+        goToVocab(0);
     }
 
-    private void fakeVocab()
+    private List<Vocab> fakeVocab()
     {
         List<Vocab> tempList = new ArrayList<Vocab>();
 
-        String format = "https://docs.google.com/uc?export=download&id=";
-        String fileID1 = "1Y_iOF08i9imJY3pFo-95ZN1_KqQh-7_c";
-        String fileID2 = "1_T6COeyzkHMsjZMCvT2d3jUUzSCk2Y9j";
+        tempList.add(new Vocab("Apple", "Poisonous Fruit", "Pen Pineapple Apple Pen", "unknown"));
+        tempList.add(new Vocab("Carrot", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
+        tempList.add(new Vocab("One", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
+        tempList.add(new Vocab("Two", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
+        tempList.add(new Vocab("Three", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
 
-        tempList.add(new Vocab("Apple", "Poisonous Fruit", "Pen Pineapple Apple Pen", format + fileID1));
-        tempList.add(new Vocab("Carrot", "Stupid Vegetable", "Long Stupid Temp Sentence", format + fileID2));
-
-        for (Vocab word : tempList)
-        {
-            insertVocabToLesson(word);
-        }
+        return tempList;
     }
 
-    private void insertVocabToLesson(Vocab word)
+    private void insertVocabToLesson(String word)
     {
         LinearLayout parent = new LinearLayout(this);
 
@@ -74,9 +73,13 @@ public class Lesson extends AppCompatActivity
 
         parent.setOrientation(LinearLayout.HORIZONTAL);
 
-        ImageView image = createHeadphone(word.get_sentence());
+        ImageView image = createHeadphone(word);
 
-        TextView text = createSentence(word.get_sentence());
+        ImageView micro = createMicro();
+
+        TextView text = createSentence(word);
+
+        parent.addView(micro);
 
         parent.addView(image);
 
@@ -87,6 +90,43 @@ public class Lesson extends AppCompatActivity
         board.addView(parent);
     }
 
+    private ImageView createMicro()
+    {
+        ImageView image = new ImageView(this);
+
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                3.0f
+        );
+
+        float scale = getResources().getDisplayMetrics().density;
+
+        int dp = (int) (5 * scale + 0.5f);
+
+        image.setPadding(dp, dp, dp, dp);
+
+        image.setLayoutParams(param);
+
+        image.setImageResource(R.drawable.edit);
+
+        recordWord(image);
+
+        return image;
+    }
+
+    private void recordWord(ImageView micro)
+    {
+        micro.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+            }
+        });
+    }
+
     private ImageView createHeadphone(String text)
     {
         ImageView image = new ImageView(this);
@@ -94,12 +134,12 @@ public class Lesson extends AppCompatActivity
         LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                5.0f
+                3.0f
         );
 
         float scale = getResources().getDisplayMetrics().density;
 
-        int dp = (int) (10 * scale + 0.5f);
+        int dp = (int) (5 * scale + 0.5f);
 
         image.setPadding(dp, dp, dp, dp);
 
@@ -159,27 +199,109 @@ public class Lesson extends AppCompatActivity
         return text;
     }
 
-    private void setActionForButton()
+    private void setActionForButtonOnStart()
     {
-        Button btnLesson = (Button) findViewById(R.id.btn_lesson);
-        Button btnQuiz = (Button) findViewById(R.id.btn_quiz);
+        Button btnLeft = (Button) findViewById(R.id.lesson_left_btn);
+        Button btnRight = (Button) findViewById(R.id.lesson_right_btn);
 
-        btnLesson.setOnClickListener(new View.OnClickListener() {
+        btnLeft.setText("HOME");
+        btnRight.setText("NEXT");
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // do nothing
+                goToHome();
             }
         });
 
-        btnQuiz.setOnClickListener(new View.OnClickListener() {
+        btnRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToQuizList();
+                goToVocab(index + 1);
             }
         });
     }
 
-    private void goToQuizList()
+    private void setActionForButtonOnMiddle()
+    {
+        Button btnLeft = (Button) findViewById(R.id.lesson_left_btn);
+        Button btnRight = (Button) findViewById(R.id.lesson_right_btn);
+
+        btnLeft.setText("PREV");
+        btnRight.setText("NEXT");
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToVocab(index - 1);
+            }
+        });
+
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToVocab(index + 1);
+            }
+        });
+    }
+
+    private void setActionForButtonOnEnd()
+    {
+        Button btnLeft = (Button) findViewById(R.id.lesson_left_btn);
+        Button btnRight = (Button) findViewById(R.id.lesson_right_btn);
+
+        btnLeft.setText("PREV");
+        btnRight.setText("QUIZ");
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToVocab(index - 1);
+            }
+        });
+
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToPractice();
+            }
+        });
+    }
+
+    private void goToVocab(int newIndex)
+    {
+        LinearLayout board = (LinearLayout)findViewById(R.id.lesson_board);
+
+        board.removeAllViews();
+
+        index = newIndex;
+
+        if (index == start)
+        {
+            setActionForButtonOnStart();
+        }
+        else if (index == finish)
+        {
+            setActionForButtonOnEnd();
+        }
+        else setActionForButtonOnMiddle();
+
+        Vocab word = listVocab.get(index);
+
+        insertVocabToLesson(word.get_name());
+
+        insertVocabToLesson(word.get_sentence());
+    }
+
+
+    private void goToHome()
+    {
+        Intent intent = new Intent(Lesson.this, Home.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToPractice()
     {
         Intent intent = new Intent(Lesson.this, Practice.class);
         startActivity(intent);

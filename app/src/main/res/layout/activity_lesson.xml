@@ -54,6 +54,8 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+
+
         </LinearLayout>
 
     </RelativeLayout>
@@ -66,25 +68,25 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/btn_lesson"
+            android:id="@+id/lesson_left_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:padding="10dp"
-            android:text="Lesson"/>
+            android:text="Home"/>
 
 
         <Button
-            android:id="@+id/btn_quiz"
+            android:id="@+id/lesson_right_btn"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:padding="10dp"
-            android:text="Practice"/>
+            android:text="Next"/>
 
     </LinearLayout>
 

@@ -91,8 +91,8 @@ public class Practice extends AppCompatActivity
 
     private void setActionForButton()
     {
-        Button btnLesson = (Button) findViewById(R.id.btn_lesson);
-        Button btnQuiz = (Button) findViewById(R.id.btn_quiz);
+        Button btnLesson = (Button) findViewById(R.id.lesson_left_btn);
+        Button btnQuiz = (Button) findViewById(R.id.lesson_right_btn);
 
         btnLesson.setOnClickListener(new View.OnClickListener() {
             @Override

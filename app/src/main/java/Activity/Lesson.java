@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
@@ -201,8 +199,8 @@ public class Lesson extends AppCompatActivity
 
     private void setActionForButtonOnStart()
     {
-        Button btnLeft = (Button) findViewById(R.id.lesson_left_btn);
-        Button btnRight = (Button) findViewById(R.id.lesson_right_btn);
+        Button btnLeft = (Button) findViewById(R.id.left_btn);
+        Button btnRight = (Button) findViewById(R.id.right_btn);
 
         btnLeft.setText("HOME");
         btnRight.setText("NEXT");
@@ -224,8 +222,8 @@ public class Lesson extends AppCompatActivity
 
     private void setActionForButtonOnMiddle()
     {
-        Button btnLeft = (Button) findViewById(R.id.lesson_left_btn);
-        Button btnRight = (Button) findViewById(R.id.lesson_right_btn);
+        Button btnLeft = (Button) findViewById(R.id.left_btn);
+        Button btnRight = (Button) findViewById(R.id.right_btn);
 
         btnLeft.setText("PREV");
         btnRight.setText("NEXT");
@@ -247,8 +245,8 @@ public class Lesson extends AppCompatActivity
 
     private void setActionForButtonOnEnd()
     {
-        Button btnLeft = (Button) findViewById(R.id.lesson_left_btn);
-        Button btnRight = (Button) findViewById(R.id.lesson_right_btn);
+        Button btnLeft = (Button) findViewById(R.id.left_btn);
+        Button btnRight = (Button) findViewById(R.id.right_btn);
 
         btnLeft.setText("PREV");
         btnRight.setText("QUIZ");

@@ -41,7 +41,7 @@
                 android:text="You eat mushroom" />
 
             <TextView
-                android:id="@+id/answer"
+                android:id="@+id/quiz_answer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/quiz_border"
@@ -117,7 +117,7 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/lesson_left_btn"
+            android:id="@+id/left_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -128,14 +128,14 @@
 
 
         <Button
-            android:id="@+id/lesson_right_btn"
+            android:id="@+id/right_btn"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:padding="10dp"
-            android:text="Practice"/>
+            android:text="Next"/>
 
     </LinearLayout>
 

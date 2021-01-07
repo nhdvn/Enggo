@@ -19,16 +19,15 @@ public class JDBCModel {
     {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        JDBCObject objEntity = new JDBCObject("192.168.1.8", "sa", "saxsax11", "master", "1433");
+        JDBCObject objEntity = new JDBCObject("enggo.c8l5kpzedbpc.ap-southeast-1.rds.amazonaws.com", "admin", "Saxsax11", "elsafake", "1433");
         Connection objConn = null;
 
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-
             String sConnURL = "jdbc:jtds:sqlserver://" + objEntity.getsServerName() + ":" + objEntity.getsPort() + ";" +
                             "databaseName=" + objEntity.getsDatabase() + ";encrypt=False;sslProtocol=TLSv1.2";
 
-            objConn = DriverManager.getConnection(sConnURL, "sa", "saxsax11");
+            objConn = DriverManager.getConnection(sConnURL, objEntity.getsUserId(), objEntity.getsPwd());
         }
         catch (SQLException se) {
             Log.e("Error", se.getMessage());

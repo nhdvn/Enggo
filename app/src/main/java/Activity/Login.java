@@ -38,10 +38,7 @@ public class Login extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // queryUser(); // comment out for testing without database
-
-                goToChooseTopic();
+                queryUser(); // comment out for testing without database
             }
         });
 

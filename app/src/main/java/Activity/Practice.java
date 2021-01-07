@@ -36,8 +36,7 @@ public class Practice extends AppCompatActivity
 
     private void testCode()
     {
-        List<String> tokenList = new ArrayList<String>();
-
+        List<String> tokenList = new ArrayList<>();
         tokenList.add("bạn");
         tokenList.add("là");
         tokenList.add("ai");
@@ -49,8 +48,6 @@ public class Practice extends AppCompatActivity
         tokenList.add("ta");
         tokenList.add("ta");
         tokenList.add("ta");
-
-
 
         for (String option : tokenList) {
             insertToken(option);

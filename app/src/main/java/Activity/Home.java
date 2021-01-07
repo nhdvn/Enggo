@@ -34,31 +34,19 @@ public class Home extends AppCompatActivity
 
         mContext = Home.this;
         setActionForButton();
-        testCode();
+        realCode();
     }
 
-    private void testCode()
-    {
-        List<Topic> tempList = new ArrayList<Topic>();
-        List<Vocab> vocab = new ArrayList<Vocab>();
 
-        tempList.add(new Topic("hello1", vocab));
-        tempList.add(new Topic("hello2", vocab));
-        tempList.add(new Topic("hello3", vocab));
-
-        for (Topic newTopic : tempList) {
-            insertTopic(newTopic);
-        }
-    }
 
     private void realCode() // PLEASE NOTICE ME SENPAI
     {
         TopicModel model = new TopicModel();
 
         try {
-            List<Topic> topicList = model.GetTopicList();
+            List<String> topicList = model.GetTopicList();
 
-            for (Topic newTopic : topicList) {
+            for (String newTopic : topicList) {
                 insertTopic(newTopic);
             }
         }
@@ -95,13 +83,13 @@ public class Home extends AppCompatActivity
         this.finish();
     }
 
-    private void insertTopic(Topic newTopic)
+    private void insertTopic(String newTopic)
     {
         GridLayout gridLayout = (GridLayout) findViewById(R.id.topic_grid);
 
         TextView textView = new TextView(this);
 
-        textView.setText(newTopic.get_name());
+        textView.setText(newTopic);
 
         GridLayout.LayoutParams param = new GridLayout.LayoutParams(
                 GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f),
@@ -110,7 +98,7 @@ public class Home extends AppCompatActivity
 
         float scale = getResources().getDisplayMetrics().density;
 
-        int dp30 = (int) (30 * scale + 0.5f);
+        int dp30 = (int) (20 * scale + 0.5f);
 
         textView.setPadding(dp30, dp30, dp30, dp30);
 
@@ -123,16 +111,17 @@ public class Home extends AppCompatActivity
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToLesson();
+                goToLesson(newTopic);
             }
         });
 
         gridLayout.addView(textView, param);
     }
 
-    private void goToLesson()
+    private void goToLesson(String topic)
     {
         Intent intent = new Intent(mContext, Lesson.class);
+        intent.putExtra("Topic", topic);
         startActivity(intent);
     }
 }

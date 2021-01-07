@@ -18,9 +18,9 @@ public class TopicModel {
         connection = jdbcController.ConnectionData();
     }
 
-    public List<Topic> GetTopicList() throws SQLException
+    public List<String> GetTopicList() throws SQLException
     {
-        List<Topic> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         Statement statement = connection.createStatement();
         String sql = "select * from topic";
         ResultSet rs = statement.executeQuery(sql);
@@ -29,15 +29,7 @@ public class TopicModel {
         {
             String sql_vocab = "select * from Voc_lesson, Vocabulary where " +
                     "Voc_lesson.voc_id = Vocabulary.voc_id and topic_id = " + rs.getString("id");
-            ResultSet Vocab = statement.executeQuery(sql_vocab);
-            List<Vocab> vocabs = new ArrayList<>();
-
-            while(Vocab.next())
-            {
-                vocabs.add(new Vocab(Vocab.getString("voc"),Vocab.getString("meaning"),
-                        Vocab.getString("sentences"), Vocab.getString("listen") ));
-            }
-            list.add(new Topic(rs.getString("name"), vocabs));
+            list.add(rs.getString("name"));
         }
 
         connection.close();

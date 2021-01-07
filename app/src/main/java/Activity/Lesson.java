@@ -16,12 +16,13 @@ import android.widget.TextView;
 
 import com.example.enggo.R;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import Object.Vocab;
-
+import SQLServerConnection.VocabModel;
 
 public class Lesson extends AppCompatActivity
 {
@@ -35,9 +36,13 @@ public class Lesson extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
-
-        listVocab = fakeVocab();
-
+        Intent i = getIntent();
+        String topic = i.getStringExtra("Topic");
+        try {
+            listVocab = new VocabModel().GetVocabList(topic);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         start = 0;
         index = 0;
         finish = listVocab.size() - 1;
@@ -45,18 +50,6 @@ public class Lesson extends AppCompatActivity
         goToVocab(0);
     }
 
-    private List<Vocab> fakeVocab()
-    {
-        List<Vocab> tempList = new ArrayList<Vocab>();
-
-        tempList.add(new Vocab("Apple", "Poisonous Fruit", "Pen Pineapple Apple Pen", "unknown"));
-        tempList.add(new Vocab("Carrot", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
-        tempList.add(new Vocab("One", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
-        tempList.add(new Vocab("Two", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
-        tempList.add(new Vocab("Three", "Stupid Vegetable", "Long Stupid Temp Sentence", "unknown"));
-
-        return tempList;
-    }
 
     private void insertVocabToLesson(String word)
     {

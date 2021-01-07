@@ -59,7 +59,8 @@ public class Login extends AppCompatActivity {
         try {
             if (!userModel.checkUser(user))
             {
-                Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
+                goToChooseTopic();
+//                Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
             }
             else goToChooseTopic();
         }

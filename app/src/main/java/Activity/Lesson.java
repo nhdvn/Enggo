@@ -53,7 +53,7 @@ public class Lesson extends AppCompatActivity
     }
 
 
-    private void insertVocabToLesson(String word)
+    private void insertVocabToLesson(String word, String meaning)
     {
         LinearLayout parent = new LinearLayout(this);
 
@@ -62,21 +62,17 @@ public class Lesson extends AppCompatActivity
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        param.setMargins(0, 0, 0, 30);
-
         parent.setLayoutParams(param);
 
-        parent.setOrientation(LinearLayout.HORIZONTAL);
+        parent.setOrientation(LinearLayout.VERTICAL);
 
-        ImageView image = createHeadphone(word);
+        param.setMargins(0, 50, 0, 0);
 
-        ImageView micro = createMicro(word);
+        LinearLayout button = createUtilsButton(word);
 
-        TextView text = createSentence(word);
+        parent.addView(button);
 
-        parent.addView(micro);
-
-        parent.addView(image);
+        TextView text = createSentence(word + meaning);
 
         parent.addView(text);
 
@@ -85,25 +81,45 @@ public class Lesson extends AppCompatActivity
         board.addView(parent);
     }
 
+    private LinearLayout createUtilsButton(String word)
+    {
+        LinearLayout parent = new LinearLayout(this);
+
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        parent.setPadding(20, 0, 0, 0);
+
+        parent.setLayoutParams(param);
+
+        parent.setOrientation(LinearLayout.HORIZONTAL);
+
+        ImageView speak = createHeadphone(word);
+
+        ImageView micro = createMicro(word);
+
+        parent.addView(speak);
+
+        parent.addView(micro);
+
+        return parent;
+    }
+
+
     private ImageView createMicro(String word)
     {
         ImageView image = new ImageView(this);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                3.0f
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(75, 75, 1.0f
         );
 
-        float scale = getResources().getDisplayMetrics().density;
-
-        int dp = (int) (5 * scale + 0.5f);
-
-        image.setPadding(dp, dp, dp, dp);
+        param.setMargins(0, 10, 0, 0);
 
         image.setLayoutParams(param);
 
-        image.setImageResource(R.drawable.edit);
+        image.setImageResource(R.drawable.micro);
         stt = new STT(Lesson.this, word);
         recordWord(image, word);
 
@@ -127,17 +143,9 @@ public class Lesson extends AppCompatActivity
     {
         ImageView image = new ImageView(this);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                3.0f
-        );
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(70, 70, 1.0f);
 
-        float scale = getResources().getDisplayMetrics().density;
-
-        int dp = (int) (5 * scale + 0.5f);
-
-        image.setPadding(dp, dp, dp, dp);
+        param.setMargins(0, 10, 0, 0);
 
         image.setLayoutParams(param);
 
@@ -174,8 +182,7 @@ public class Lesson extends AppCompatActivity
 
         LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1.0f
+                LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
         float scale = getResources().getDisplayMetrics().density;
@@ -185,6 +192,8 @@ public class Lesson extends AppCompatActivity
         text.setPadding(dp, dp, dp, dp);
 
         text.setText(example);
+
+        text.setTextSize(20);
 
         text.setTextColor(Color.BLACK);
 
@@ -284,16 +293,14 @@ public class Lesson extends AppCompatActivity
 
         Vocab word = listVocab.get(index);
 
-        insertVocabToLesson(word.get_name());
+        insertVocabToLesson(word.get_name().trim(), ": " + word.get_meaning());
 
-        insertVocabToLesson(word.get_sentence());
+        insertVocabToLesson(word.get_sentence(), "");
     }
 
 
     private void goToHome()
     {
-        Intent intent = new Intent(Lesson.this, Home.class);
-        startActivity(intent);
         this.finish();
     }
 

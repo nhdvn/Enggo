@@ -33,6 +33,7 @@
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:padding="10dp"
+            android:textStyle="bold"
             android:text="Insert"/>
 
 
@@ -43,6 +44,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:padding="10dp"
             android:text="Home"/>
 

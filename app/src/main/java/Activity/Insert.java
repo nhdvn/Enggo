@@ -41,7 +41,7 @@ public class Insert extends AppCompatActivity
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
 
         dropdown.setAdapter(adapter);
     }

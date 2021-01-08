@@ -12,12 +12,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:columnCount="1"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:columnCount="2"
         android:useDefaultMargins="true">
 
     </GridLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/quiz_border"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,26 +32,32 @@
         android:weightSum="2"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
             android:padding="10dp"
+            android:background="@color/white"
+            android:textStyle="bold"
             android:text="Profile"/>
 
+        <TextView
+            android:layout_width="2.5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/quiz_border">
 
-        <Button
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_home"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
+            android:layout_weight="1"
             android:padding="10dp"
-            android:text="Home"/>
+            android:background="@color/white"
+            android:textStyle="bold"
+            android:text="Home" />
 
     </LinearLayout>
 

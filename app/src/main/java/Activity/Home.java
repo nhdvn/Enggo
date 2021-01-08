@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -89,24 +90,32 @@ public class Home extends AppCompatActivity
 
         TextView textView = new TextView(this);
 
-        textView.setText(newTopic);
+        textView.setText(newTopic.trim());
 
         GridLayout.LayoutParams param = new GridLayout.LayoutParams(
                 GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f),
                 GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f)
         );
 
+        param.width = 100;
+
         float scale = getResources().getDisplayMetrics().density;
 
         int dp30 = (int) (20 * scale + 0.5f);
 
-        textView.setPadding(dp30, dp30, dp30, dp30);
+        textView.setPadding(0, dp30, 0, dp30);
+
+        textView.setTextSize(20);
 
         textView.setTextColor(Color.BLACK);
+
+        textView.setTypeface(null, Typeface.BOLD);
 
         textView.setGravity(Gravity.CENTER);
 
         textView.setBackgroundResource(R.drawable.quiz_border);
+
+        textView.setBackgroundColor(getResources().getColor(R.color.green));
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

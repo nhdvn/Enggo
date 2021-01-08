@@ -29,7 +29,7 @@ public class TopicModel {
         {
             String sql_vocab = "select * from Voc_lesson, Vocabulary where " +
                     "Voc_lesson.voc_id = Vocabulary.voc_id and topic_id = " + rs.getString("id");
-            list.add(rs.getString("name"));
+            list.add(rs.getString("name").trim());
         }
 
         connection.close();

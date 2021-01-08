@@ -18,12 +18,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="40dp"
-            android:fontFamily="cursive"
             android:text="ENGGO"
+            android:fontFamily="serif-monospace"
             android:textAlignment="center"
-            android:textColor="@color/teal_700"
+            android:textColor="@color/black"
+            android:background="#bfe7c3"
             android:textSize="50sp"
-            android:textStyle="bold" />
+            android:padding="10dp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

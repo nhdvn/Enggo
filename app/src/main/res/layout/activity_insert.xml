@@ -49,7 +49,8 @@
             <EditText
                 android:layout_weight="4"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/word">
 
             </EditText>
         </LinearLayout>
@@ -69,7 +70,9 @@
             <EditText
                 android:layout_weight="4"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/meaning">
+
 
             </EditText>
         </LinearLayout>
@@ -89,7 +92,8 @@
             <EditText
                 android:layout_weight="4"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/example">
 
             </EditText>
         </LinearLayout>

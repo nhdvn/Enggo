@@ -5,15 +5,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import Object.Vocab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.enggo.R;
 
+import java.sql.SQLException;
+
+import SQLServerConnection.TopicModel;
+import SQLServerConnection.VocabModel;
 public class Insert extends AppCompatActivity
 {
+    Spinner dropdown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +33,14 @@ public class Insert extends AppCompatActivity
 
     private void setDropDown()
     {
-        Spinner dropdown = findViewById(R.id.dropdown_topic);
-
-        String[] items = new String[]{"None First", "No Second", "Not Third"};
-
+        dropdown = findViewById(R.id.dropdown_topic);
+        String[] items = null;
+        TopicModel listTopic = new TopicModel();
+        try {
+            items = listTopic.GetTopicList().toArray(new String[0]);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
 
         dropdown.setAdapter(adapter);
@@ -59,7 +71,19 @@ public class Insert extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                // insert to database
+                EditText word = findViewById(R.id.word);
+                EditText sentence = findViewById(R.id.example);
+                EditText mean = findViewById(R.id.meaning);
+                VocabModel insert = new VocabModel();
+                Vocab newVocab = new Vocab(word.getText().toString(),mean.getText().toString(),
+                        sentence.getText().toString(), "");
+                try {
+                    insert.InsertVocab(newVocab, dropdown.getSelectedItem().toString());
+                    Toast.makeText(Insert.this, "Insert successful !!!", Toast.LENGTH_LONG).show();
+                } catch (SQLException throwables) {
+                    Toast.makeText(Insert.this, "Insert failed !!!", Toast.LENGTH_LONG).show();
+                    throwables.printStackTrace();
+                }
             }
         });
     }

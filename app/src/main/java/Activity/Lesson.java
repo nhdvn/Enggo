@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.enggo.R;
+import com.example.enggo.STT;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,13 +28,16 @@ public class Lesson extends AppCompatActivity
     int start;
     int index;
     int finish;
-
+    STT stt;
     List<Vocab> listVocab = null;
+    TextView result;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson);
+        result = findViewById(R.id.status);
         Intent i = getIntent();
         String topic = i.getStringExtra("Topic");
         try {
@@ -66,7 +70,7 @@ public class Lesson extends AppCompatActivity
 
         ImageView image = createHeadphone(word);
 
-        ImageView micro = createMicro();
+        ImageView micro = createMicro(word);
 
         TextView text = createSentence(word);
 
@@ -81,7 +85,7 @@ public class Lesson extends AppCompatActivity
         board.addView(parent);
     }
 
-    private ImageView createMicro()
+    private ImageView createMicro(String word)
     {
         ImageView image = new ImageView(this);
 
@@ -100,20 +104,21 @@ public class Lesson extends AppCompatActivity
         image.setLayoutParams(param);
 
         image.setImageResource(R.drawable.edit);
-
-        recordWord(image);
+        stt = new STT(Lesson.this, word);
+        recordWord(image, word);
 
         return image;
     }
 
-    private void recordWord(ImageView micro)
+    private void recordWord(ImageView micro, String word)
     {
         micro.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-
+                stt.set_compare(word);
+                stt.Listening();
             }
         });
     }

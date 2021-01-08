@@ -22,27 +22,34 @@ public class Profile extends AppCompatActivity
 
     private void setActionForButton()
     {
-        Button btnTopic = (Button) findViewById(R.id.btn_home);
-        Button btnProfile = (Button) findViewById(R.id.btn_profile);
+        Button btnHome = (Button) findViewById(R.id.btn_home);
+        Button btnInsert = (Button) findViewById(R.id.btn_insert);
 
-        btnProfile.setOnClickListener(new View.OnClickListener() {
+        btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // do nothing
+                goToInsert();
             }
         });
 
-        btnTopic.setOnClickListener(new View.OnClickListener() {
+        btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToTopicList();
+                goToHome();
             }
         });
     }
 
-    private void goToTopicList()
+    private void goToHome()
     {
         Intent intent = new Intent(Profile.this, Home.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToInsert()
+    {
+        Intent intent = new Intent(Profile.this, Insert.class);
         startActivity(intent);
         this.finish();
     }

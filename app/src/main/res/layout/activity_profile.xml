@@ -26,14 +26,14 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/btn_profile"
+            android:id="@+id/btn_insert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/border"
             android:textColor="@color/black"
             android:padding="10dp"
-            android:text="Profile"/>
+            android:text="Insert"/>
 
 
         <Button

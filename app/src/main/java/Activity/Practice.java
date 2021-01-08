@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.enggo.R;
@@ -19,12 +20,19 @@ import java.util.List;
 
 public class Practice extends AppCompatActivity
 {
+    int start;
+    int index;
+    int finish;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
-        setActionForButton();
+
+        start = 0;
+        index = 0;
+        finish = 0;
 
         testCode();
     }
@@ -82,36 +90,120 @@ public class Practice extends AppCompatActivity
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add this option to user answer
+                TextView input = (TextView) findViewById(R.id.quiz_answer);
+
+                input.setText(input.getText().toString() + ' ' + textView.getText());
             }
         });
 
         gridLayout.addView(textView, param);
     }
 
-    private void setActionForButton()
+    private void setActionForButtonOnStart()
     {
-        Button btnLesson = (Button) findViewById(R.id.lesson_left_btn);
-        Button btnQuiz = (Button) findViewById(R.id.lesson_right_btn);
+        Button btnLeft = (Button) findViewById(R.id.left_btn);
+        Button btnRight = (Button) findViewById(R.id.right_btn);
 
-        btnLesson.setOnClickListener(new View.OnClickListener() {
+        btnLeft.setText("LESSON");
+        btnRight.setText("NEXT");
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToLesson();
             }
         });
 
-        btnQuiz.setOnClickListener(new View.OnClickListener() {
+        btnRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // do nothing
+                goToQuiz(index + 1);
             }
         });
     }
 
+    private void setActionForButtonOnMiddle()
+    {
+        Button btnLeft = (Button) findViewById(R.id.left_btn);
+        Button btnRight = (Button) findViewById(R.id.right_btn);
+
+        btnLeft.setText("PREV");
+        btnRight.setText("NEXT");
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToQuiz(index - 1);
+            }
+        });
+
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToQuiz(index + 1);
+            }
+        });
+    }
+
+    private void setActionForButtonOnEnd()
+    {
+        Button btnLeft = (Button) findViewById(R.id.left_btn);
+        Button btnRight = (Button) findViewById(R.id.right_btn);
+
+        btnLeft.setText("PREV");
+        btnRight.setText("HOME");
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToQuiz(index - 1);
+            }
+        });
+
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToHome();
+            }
+        });
+    }
+
+    private void goToQuiz(int newIndex)
+    {
+        GridLayout board = (GridLayout) findViewById(R.id.token_board);
+
+        board.removeAllViews();
+
+        index = newIndex;
+
+        if (index == start)
+        {
+            setActionForButtonOnStart();
+        }
+        else if (index == finish)
+        {
+            setActionForButtonOnEnd();
+        }
+        else setActionForButtonOnMiddle();
+
+        // get quiz answer
+
+        // split into token
+
+        // insert all token randomly
+    }
+
+
     private void goToLesson()
     {
         Intent intent = new Intent(Practice.this, Lesson.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    private void goToHome()
+    {
+        Intent intent = new Intent(Practice.this, Home.class);
         startActivity(intent);
         this.finish();
     }

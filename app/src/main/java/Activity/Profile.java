@@ -24,6 +24,16 @@ public class Profile extends AppCompatActivity
     {
         Button btnHome = (Button) findViewById(R.id.btn_home);
         Button btnInsert = (Button) findViewById(R.id.btn_insert);
+        Button btnLogout = (Button) findViewById(R.id.btn_logout);
+
+        btnLogout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                goToLogin();
+            }
+        });
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +48,13 @@ public class Profile extends AppCompatActivity
                 goToHome();
             }
         });
+    }
+
+    private void goToLogin()
+    {
+        Intent intent = new Intent(Profile.this, Login.class);
+        startActivity(intent);
+        this.finish();
     }
 
     private void goToHome()

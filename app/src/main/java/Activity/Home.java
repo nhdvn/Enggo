@@ -113,9 +113,7 @@ public class Home extends AppCompatActivity
 
         textView.setGravity(Gravity.CENTER);
 
-        textView.setBackgroundResource(R.drawable.quiz_border);
-
-        textView.setBackgroundColor(getResources().getColor(R.color.green));
+        textView.setBackgroundResource(R.drawable.border_color);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

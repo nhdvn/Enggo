@@ -63,6 +63,12 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/quiz_border"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,28 +76,32 @@
         android:weightSum="2"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/left_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
             android:padding="10dp"
+            android:background="@color/white"
             android:textStyle="bold"
             android:text="Home"/>
 
+        <TextView
+            android:layout_width="2.5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/quiz_border">
 
-        <Button
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/right_btn"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
+            android:layout_weight="1"
             android:padding="10dp"
+            android:background="@color/white"
             android:textStyle="bold"
-            android:text="Next"/>
+            android:text="Next" />
 
     </LinearLayout>
 

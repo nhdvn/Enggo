@@ -211,6 +211,7 @@ public class Lesson extends AppCompatActivity
 
         btnLeft.setText("HOME");
         btnRight.setText("NEXT");
+        ImageView btnNote = (ImageView) findViewById(R.id.btn_note);
 
         btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,6 +224,13 @@ public class Lesson extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 goToVocab(index + 1);
+            }
+        });
+
+        btnNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToTakeNote();
             }
         });
     }
@@ -309,6 +317,12 @@ public class Lesson extends AppCompatActivity
         Intent intent = new Intent(Lesson.this, Practice.class);
         startActivity(intent);
         this.finish();
+    }
+
+    private void goToTakeNote()
+    {
+        Intent intent = new Intent(Lesson.this, Takenote.class);
+        startActivity(intent);
     }
 }
 

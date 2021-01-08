@@ -2,5 +2,6 @@
     <string name="app_name">Enggo</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
+    <string name="takenote_edit_fragment">Take Note Edit</string>
 
 </resources>

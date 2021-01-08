@@ -32,6 +32,8 @@
         <activity android:name="Activity.Lesson" />
 
         <activity android:name="Activity.Insert" />
+        
+        <activity android:name="Activity.Takenote" />
 
     </application>
 

@@ -66,7 +66,7 @@ public class Lesson extends AppCompatActivity
 
         parent.setOrientation(LinearLayout.VERTICAL);
 
-        param.setMargins(0, 100, 0, 0);
+        param.setMargins(0, 50, 0, 0);
 
         LinearLayout button = createUtilsButton(word);
 
@@ -90,7 +90,7 @@ public class Lesson extends AppCompatActivity
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
 
-        parent.setPadding(50, 0, 0, 0);
+        parent.setPadding(20, 0, 0, 0);
 
         parent.setLayoutParams(param);
 
@@ -112,10 +112,7 @@ public class Lesson extends AppCompatActivity
     {
         ImageView image = new ImageView(this);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                100,
-                100,
-                4.0f
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(75, 75, 1.0f
         );
 
         param.setMargins(0, 10, 0, 0);
@@ -146,11 +143,7 @@ public class Lesson extends AppCompatActivity
     {
         ImageView image = new ImageView(this);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                100,
-                80,
-                3.0f
-        );
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(70, 70, 1.0f);
 
         param.setMargins(0, 10, 0, 0);
 
@@ -188,11 +181,9 @@ public class Lesson extends AppCompatActivity
         TextView text = new TextView(this);
 
         LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-
-        param.setMargins(20, 0, 0, 0);
 
         float scale = getResources().getDisplayMetrics().density;
 

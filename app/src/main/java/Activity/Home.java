@@ -96,11 +96,13 @@ public class Home extends AppCompatActivity
                 GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f)
         );
 
+        param.width = 100;
+
         float scale = getResources().getDisplayMetrics().density;
 
         int dp30 = (int) (20 * scale + 0.5f);
 
-        textView.setPadding(dp30, dp30, dp30, dp30);
+        textView.setPadding(0, dp30, 0, dp30);
 
         textView.setTextSize(20);
 

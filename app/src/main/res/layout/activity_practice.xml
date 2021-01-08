@@ -30,9 +30,10 @@
                 android:textColor="@color/black"/>
 
             <TextView
-                android:id="@+id/question"
+                android:id="@+id/practice_question"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:typeface="serif"
@@ -43,14 +44,15 @@
             <TextView
                 android:id="@+id/quiz_answer"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/quiz_border"
-                android:paddingLeft="20dp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:text="> "/>
+                android:text=""/>
 
             <GridLayout
                 android:id="@+id/token_board"
@@ -59,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:useDefaultMargins="true"
-                android:columnCount="5">
+                android:columnCount="4">
 
             </GridLayout>
 
@@ -75,6 +77,7 @@
 
 
             <TextView
+                android:id="@+id/quiz_clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/quiz_border"
@@ -83,7 +86,8 @@
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="Pass"/>
+                android:textStyle="bold"
+                android:text="CLEAR"/>
 
             <TextView
                 android:layout_width="40dp"
@@ -100,15 +104,20 @@
                 android:paddingBottom="10dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="Submit"/>
+                android:textStyle="bold"
+                android:text="SUBMIT"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
 
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/quiz_border"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,28 +125,32 @@
         android:weightSum="2"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/left_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
             android:padding="10dp"
+            android:background="@color/white"
             android:textStyle="bold"
             android:text="Lesson"/>
 
+        <TextView
+            android:layout_width="2.5dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/quiz_border">
 
-        <Button
+        </TextView>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/right_btn"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:textColor="@color/black"
+            android:layout_weight="1"
             android:padding="10dp"
+            android:background="@color/white"
             android:textStyle="bold"
-            android:text="Next"/>
+            android:text="Next" />
 
     </LinearLayout>
 

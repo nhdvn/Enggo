@@ -5,61 +5,95 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.enggo.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 
 public class Practice extends AppCompatActivity
 {
-    int start;
-    int index;
-    int finish;
+    int start, index, finish;
+
+    List<String> quest = null;
+    List<String> trans = null;
+    List<String> token = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
-
         start = 0;
         index = 0;
-        finish = 0;
+        finish = 2;
 
-        testCode();
+        quest = new ArrayList<>();
+        trans = new ArrayList<>();
+        token = new ArrayList<>();
+
+        mockData();
+
+        goToQuiz(0);
+
+        TextView submit = (TextView)findViewById(R.id.quiz_submit);
+
+        submit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                TextView answer = (TextView)findViewById(R.id.quiz_answer);
+
+                String temp = answer.getText().toString().trim();
+
+                if (temp.length() > 0 && temp.equals(quest.get(index)))
+                {
+                    Toast.makeText(Practice.this, "You got it right !!!", Toast.LENGTH_LONG).show();
+                }
+                else Toast.makeText(Practice.this, "Maybe try again", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        TextView clear = (TextView)findViewById(R.id.quiz_clear);
+
+        clear.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                TextView answer = (TextView)findViewById(R.id.quiz_answer);
+                answer.setText("");
+            }
+        });
     }
 
-    private void realCode()
+    private void mockData()
     {
+        quest.add("math is a core subject at school");
+        quest.add("we love our parents and siblings");
+        quest.add("please take the medicine after meals");
 
-    }
+        trans.add("Toán là môn học quan trọng ở trường");
+        trans.add("Chúng tôi yêu quý bố mẹ và anh em");
+        trans.add("Hãy nhớ uống thuốc sau mỗi bữa ăn");
 
-    private void testCode()
-    {
-        List<String> tokenList = new ArrayList<>();
-        tokenList.add("bạn");
-        tokenList.add("là");
-        tokenList.add("ai");
-        tokenList.add("vậy");
-        tokenList.add("ta");
-        tokenList.add("ta");
-        tokenList.add("ta");
-        tokenList.add("ta");
-        tokenList.add("ta");
-        tokenList.add("ta");
-        tokenList.add("ta");
+        String temp = "study the and your did mother father person was his to science street young between";
 
-        for (String option : tokenList) {
-            insertToken(option);
-        }
+        token = Arrays.asList(temp);
     }
 
     private void insertToken(String option)
@@ -71,13 +105,13 @@ public class Practice extends AppCompatActivity
         textView.setText(option);
 
         GridLayout.LayoutParams param = new GridLayout.LayoutParams(
-                GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f),
-                GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f)
+                GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL, 1.0f),
+                GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL, 1.0f)
         );
 
         float scale = getResources().getDisplayMetrics().density;
 
-        int dp = (int) (10 * scale + 0.5f);
+        int dp = (int) (5 * scale + 0.5f);
 
         textView.setPadding(dp, dp, dp, dp);
 
@@ -92,7 +126,7 @@ public class Practice extends AppCompatActivity
             public void onClick(View view) {
                 TextView input = (TextView) findViewById(R.id.quiz_answer);
 
-                input.setText(input.getText().toString() + ' ' + textView.getText());
+                input.setText(input.getText().toString() + textView.getText() + ' ');
             }
         });
 
@@ -110,7 +144,7 @@ public class Practice extends AppCompatActivity
         btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToLesson();
+                goToHome();
             }
         });
 
@@ -186,25 +220,23 @@ public class Practice extends AppCompatActivity
         }
         else setActionForButtonOnMiddle();
 
-        // get quiz answer
+        TextView quiz = (TextView)findViewById(R.id.practice_question);
 
-        // split into token
+        quiz.setText(trans.get(index));
 
-        // insert all token randomly
-    }
+        List<String> askList = Arrays.asList(quest.get(index).split(" "));
+
+        Collections.shuffle(askList);
 
 
-    private void goToLesson()
-    {
-        Intent intent = new Intent(Practice.this, Lesson.class);
-        startActivity(intent);
-        this.finish();
+        for (int i = 0; i < askList.size(); i++)
+        {
+            insertToken(askList.get(i));
+        }
     }
 
     private void goToHome()
     {
-        Intent intent = new Intent(Practice.this, Home.class);
-        startActivity(intent);
         this.finish();
     }
 }

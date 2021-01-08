@@ -71,16 +71,21 @@
         android:weightSum="2"
         android:layout_alignParentBottom="true">
 
+
         <Button
             android:id="@+id/left_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/border"
-            android:textColor="@color/black"
             android:padding="10dp"
+<<<<<<< Updated upstream
             android:text="Home"/>
 
+=======
+            android:text="Lesson"
+            android:textColor="@color/black" />
+>>>>>>> Stashed changes
 
         <Button
             android:id="@+id/right_btn"

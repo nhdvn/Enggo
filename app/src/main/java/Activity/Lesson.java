@@ -53,7 +53,7 @@ public class Lesson extends AppCompatActivity
     }
 
 
-    private void insertVocabToLesson(String word, boolean needSpeaker)
+    private void insertVocabToLesson(String word, String meaning)
     {
         LinearLayout parent = new LinearLayout(this);
 
@@ -66,20 +66,13 @@ public class Lesson extends AppCompatActivity
 
         parent.setOrientation(LinearLayout.VERTICAL);
 
-        if (needSpeaker)
-        {
-            param.setMargins(0, 100, 0, 0);
+        param.setMargins(0, 100, 0, 0);
 
-            LinearLayout button = createUtilsButton(word);
+        LinearLayout button = createUtilsButton(word);
 
-            parent.addView(button);
-        }
-        else
-        {
-            param.setMargins(0, 20, 0, 0);
-        }
+        parent.addView(button);
 
-        TextView text = createSentence(word);
+        TextView text = createSentence(word + meaning);
 
         parent.addView(text);
 
@@ -309,18 +302,14 @@ public class Lesson extends AppCompatActivity
 
         Vocab word = listVocab.get(index);
 
-        insertVocabToLesson(word.get_name(), true);
+        insertVocabToLesson(word.get_name().trim(), ": " + word.get_meaning());
 
-        insertVocabToLesson(word.get_meaning(), false);
-
-        insertVocabToLesson(word.get_sentence(), true);
+        insertVocabToLesson(word.get_sentence(), "");
     }
 
 
     private void goToHome()
     {
-        Intent intent = new Intent(Lesson.this, Home.class);
-        startActivity(intent);
         this.finish();
     }
 

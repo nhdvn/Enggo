@@ -14,7 +14,7 @@
         android:layout_marginTop="100dp"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:columnCount="1"
+        android:columnCount="2"
         android:useDefaultMargins="true">
 
     </GridLayout>

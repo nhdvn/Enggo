@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity
 
         TextView textView = new TextView(this);
 
-        textView.setText(newTopic);
+        textView.setText(newTopic.trim());
 
         GridLayout.LayoutParams param = new GridLayout.LayoutParams(
                 GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL,1f),
@@ -101,6 +101,8 @@ public class Home extends AppCompatActivity
         int dp30 = (int) (20 * scale + 0.5f);
 
         textView.setPadding(dp30, dp30, dp30, dp30);
+
+        textView.setTextSize(20);
 
         textView.setTextColor(Color.BLACK);
 

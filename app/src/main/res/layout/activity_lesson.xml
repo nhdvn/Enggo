@@ -79,13 +79,8 @@
             android:layout_weight="1"
             android:background="@drawable/border"
             android:padding="10dp"
-<<<<<<< Updated upstream
-            android:text="Home"/>
-
-=======
-            android:text="Lesson"
+            android:text="Home"
             android:textColor="@color/black" />
->>>>>>> Stashed changes
 
         <Button
             android:id="@+id/right_btn"

@@ -33,16 +33,6 @@ public class Takenote extends AppCompatActivity {
         textNote = (TextView)findViewById(R.id.text_note);
 
         receiveData();
-
-        ImageView backArrow = (ImageView)findViewById(R.id.backArrow);
-        backArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToLesson();
-            }
-
-
-        });
     }
 
     public void showEdit(View view){

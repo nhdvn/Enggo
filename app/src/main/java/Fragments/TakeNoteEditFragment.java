@@ -53,6 +53,7 @@ public class TakeNoteEditFragment extends Fragment {
         Intent intent = new Intent(getActivity().getBaseContext(),Takenote.class);
         intent.putExtra("NOTE", editNote.getText().toString());
         getActivity().startActivity(intent);
+        getActivity().finish();
     }
 
 }

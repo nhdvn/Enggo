@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -108,9 +109,13 @@ public class Home extends AppCompatActivity
 
         textView.setTextColor(Color.BLACK);
 
+        textView.setTypeface(null, Typeface.BOLD);
+
         textView.setGravity(Gravity.CENTER);
 
         textView.setBackgroundResource(R.drawable.quiz_border);
+
+        textView.setBackgroundColor(getResources().getColor(R.color.green));
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

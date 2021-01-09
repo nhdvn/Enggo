@@ -75,14 +75,21 @@ public class Insert extends AppCompatActivity
                 EditText sentence = findViewById(R.id.example);
                 EditText mean = findViewById(R.id.meaning);
                 VocabModel insert = new VocabModel();
+
                 Vocab newVocab = new Vocab(word.getText().toString(),mean.getText().toString(),
                         sentence.getText().toString(), "");
-                try {
-                    insert.InsertVocab(newVocab, dropdown.getSelectedItem().toString());
-                    Toast.makeText(Insert.this, "Insert successful !!!", Toast.LENGTH_LONG).show();
-                } catch (SQLException throwables) {
+                if (word.getText().toString().equals("") || mean.getText().toString().equals("")
+                        || sentence.getText().toString().equals("")){
                     Toast.makeText(Insert.this, "Insert failed !!!", Toast.LENGTH_LONG).show();
-                    throwables.printStackTrace();
+                }
+                else {
+                    try {
+                        insert.InsertVocab(newVocab, dropdown.getSelectedItem().toString());
+                        Toast.makeText(Insert.this, "Insert successful !!!", Toast.LENGTH_LONG).show();
+                    } catch (SQLException throwables) {
+                        Toast.makeText(Insert.this, "Insert failed !!!", Toast.LENGTH_LONG).show();
+                        throwables.printStackTrace();
+                    }
                 }
             }
         });

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import Object.User;
 
@@ -37,13 +38,24 @@ public class Signup extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserModel regist = new UserModel();
-                try {
-                    regist.Insert(new User(mName.getText().toString(), mPassword2.getText().toString()));
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                String name = mName.getText().toString();
+                String pass2 = mPassword2.getText().toString();
+                String pass = mPassword.getText().toString();
+                if (pass.equals("") || name.equals("") || pass2.equals(""))
+                    Toast.makeText(getBaseContext(), "Please fill full information", Toast.LENGTH_LONG).show();
+                else if (!pass.equals(pass2)){
+                    Toast.makeText(getBaseContext(), "Retype password is wrong", Toast.LENGTH_LONG).show();
                 }
-                goToLogin();
+                else {
+                    UserModel regist = new UserModel();
+                    try {
+                        regist.Insert(new User(name, pass2));
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                    Toast.makeText(getBaseContext(), "Suscessfull", Toast.LENGTH_LONG).show();
+                    goToLogin();
+                }
             }
 
         });

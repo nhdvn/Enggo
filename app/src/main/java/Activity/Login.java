@@ -53,11 +53,15 @@ public class Login extends AppCompatActivity {
     private void queryUser()
     {
         UserModel userModel = new UserModel();
-
-        User user = new User(mEmail.getText().toString(), mPassword.getText().toString());
+        String email = mEmail.getText().toString();
+        String pass = mPassword.getText().toString();
+        User user = new User(email, pass);
 
         try {
-            if (!userModel.checkUser(user))
+            if(email.equals("") || pass.equals("")){
+                Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
+            }
+            else if (!userModel.checkUser(user))
             {
                Toast.makeText(getBaseContext(), "Your username or password wrong !", Toast.LENGTH_LONG).show();
             }
